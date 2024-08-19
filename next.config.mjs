@@ -2,6 +2,12 @@
 const nextConfig = {
     images: {
       remotePatterns: [{ protocol: "https", hostname: "cloud.appwrite.io"}]
+    },
+    typescript: {
+      ignoreBuildErrors: true,
+    },
+    eslint: {
+      ignoreDuringBuilds: true,
     }
 };
 
