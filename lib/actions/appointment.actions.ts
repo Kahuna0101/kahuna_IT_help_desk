@@ -9,7 +9,7 @@ import { Appointment } from "@/types/appwrite.types";
 import { Resend } from 'resend';
 import EmailTemplate from "@/components/EmailTemplate";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = new Resend(process.env.RESEND_API_KEY!);
 
 const {
     PROJECT_ID,
