@@ -119,7 +119,7 @@ const ComplaintForm = ({
         }
       } else {
         const appointmentToUpdate = {
-          userId,
+          userEmail: appointment?.user.email!,
           appointmentId: appointment?.$id!,
           appointment: {
             itEngineer: values?.itEngineer,

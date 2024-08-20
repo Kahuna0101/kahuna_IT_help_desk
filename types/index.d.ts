@@ -53,7 +53,7 @@ declare type SearchParamProps = {
   
   declare type updateComplaintParams = {
     appointmentId: string;
-    userId: string;
+    userEmail: string;
     appointment: Appointment;
-    type: string;
+    type:  string;
   };

@@ -2,10 +2,14 @@
 
 import { createAdminClient,} from "../appwrite.config";
 import { ID, Query } from "node-appwrite";
-import { parseStringify } from "../utils";
+import { formatDateTime, parseStringify } from "../utils";
 import { revalidatePath } from "next/cache";
 import { InputFile } from "node-appwrite/file";
 import { Appointment } from "@/types/appwrite.types";
+import { Resend } from 'resend';
+import EmailTemplate from "@/components/EmailTemplate";
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 const {
     PROJECT_ID,
@@ -50,7 +54,7 @@ export const createComplaint = async ({ complaintDocument, ...appointment }: Cre
     }
 };
 
-export const updateComplaint = async ({ appointmentId, userId, appointment, type}: updateComplaintParams) => {
+export const updateComplaint = async ({ appointmentId, userEmail , appointment, type}: updateComplaintParams) => {
     try {
         const { database } = await createAdminClient();
 
@@ -66,6 +70,12 @@ export const updateComplaint = async ({ appointmentId, userId, appointment, type
         }
 
         // Impliment a text/email notification function
+        await resend.emails.send({
+            from: "Kahuna Desk <ithelpdesk@gmail.com>",
+            to: userEmail,
+            subject: 'Complaint Notification From IT HelpDesk',
+            react: EmailTemplate({ appointment, type }),
+        });
 
         revalidatePath('/admin');
         return parseStringify(updatedComplaint);
