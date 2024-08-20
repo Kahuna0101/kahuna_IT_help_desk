@@ -2,7 +2,7 @@
 
 import { createAdminClient,} from "../appwrite.config";
 import { ID, Query } from "node-appwrite";
-import { formatDateTime, parseStringify } from "../utils";
+import { parseStringify } from "../utils";
 import { revalidatePath } from "next/cache";
 import { InputFile } from "node-appwrite/file";
 import { Appointment } from "@/types/appwrite.types";
@@ -77,7 +77,7 @@ export const updateComplaint = async ({ appointmentId, userEmail , appointment, 
             react: EmailTemplate({ appointment, type }),
         });
 
-        revalidatePath('/admin');
+        revalidatePath('/superAdmin');
         return parseStringify(updatedComplaint);
     } catch (error) {
         console.log(`Error updating complaint appointment: ${error}`)
@@ -104,7 +104,7 @@ export const getAllRecentComplaints = async () => {
     try {
         const { database } = await createAdminClient();
 
-        const appointments = await database.listDocuments(
+        const allComplaints = await database.listDocuments(
             DATABASE_ID!,
             COMPLAINT_COLLECTION_ID!,
             [Query.orderDesc('$createdAt')]
@@ -116,12 +116,12 @@ export const getAllRecentComplaints = async () => {
             resolvedCount: 0,
         }
 
-        const counts = (appointments.documents as Appointment[]).reduce((acc, appointment) => {
-            if (appointment.status === 'progress') {
+        const counts = (allComplaints.documents as Appointment[]).reduce((acc, complaint) => {
+            if (complaint.status === 'progress') {
                 acc.progressCount += 1;
-            } else if (appointment.status === 'pending') {
+            } else if (complaint.status === 'pending') {
                 acc.pendingCount += 1;
-            } else if (appointment.status === 'resolved') {
+            } else if (complaint.status === 'resolved') {
                 acc.resolvedCount += 1;
             }
 
@@ -129,9 +129,9 @@ export const getAllRecentComplaints = async () => {
         }, initialCounts);
 
         const data = {
-            totalCount: appointments.total,
+            totalCount: allComplaints.total,
             ...counts,
-            documents: appointments.documents,
+            documents: allComplaints.documents,
         }
 
         return parseStringify(data);
@@ -144,10 +144,10 @@ export const getComplaintsByAdminId = async ({ adminId }: any) => {
     try {
         const { database } = await createAdminClient();
 
-        const appointments = await database.listDocuments(
+        const adminComplaints = await database.listDocuments(
             DATABASE_ID!,
             COMPLAINT_COLLECTION_ID!,
-            [Query.equal('admin', adminId)]
+            [Query.equal('admin', adminId), Query.orderDesc('$createdAt')]
         );
 
         const initialCounts = {
@@ -156,12 +156,12 @@ export const getComplaintsByAdminId = async ({ adminId }: any) => {
             resolvedCount: 0,
         }
 
-        const counts = (appointments.documents as Appointment[]).reduce((acc, appointment) => {
-            if (appointment.status === 'progress') {
+        const counts = (adminComplaints.documents as Appointment[]).reduce((acc, complaint) => {
+            if (complaint.status === 'progress') {
                 acc.progressCount += 1;
-            } else if (appointment.status === 'pending') {
+            } else if (complaint.status === 'pending') {
                 acc.pendingCount += 1;
-            } else if (appointment.status === 'resolved') {
+            } else if (complaint.status === 'resolved') {
                 acc.resolvedCount += 1;
             }
 
@@ -169,13 +169,13 @@ export const getComplaintsByAdminId = async ({ adminId }: any) => {
         }, initialCounts);
 
         const data = {
-            totalCount: appointments.total,
+            totalCount: adminComplaints.total,
             ...counts,
-            documents: appointments.documents,
+            documents: adminComplaints.documents,
         }
 
         return parseStringify(data);
     } catch (error) {
-        console.log(`Error getting all recent appointments: ${error}`)
+        console.log(`Error getting all recent adminComplaints: ${error}`)
     }
 }

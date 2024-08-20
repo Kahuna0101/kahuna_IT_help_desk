@@ -20,7 +20,6 @@ import {
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 import { Label } from "../ui/label";
 import { PriorityStatus } from "@/data";
-import { getAdmins } from "@/lib/actions/admin.action";
 import { Skeleton } from "../ui/skeleton";
 
 const ComplaintForm = ({

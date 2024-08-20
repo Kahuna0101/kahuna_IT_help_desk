@@ -8,7 +8,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 const SuperAdmin = async () => {
-  const appointments = await getAllRecentComplaints();
+  const allComplaints = await getAllRecentComplaints();
   
   return (
     <div className="admin-dashboard">
@@ -38,26 +38,26 @@ const SuperAdmin = async () => {
           <section className="admin-stat">
             <StatCard 
               type="resolve"
-              count={appointments.resolvedCount}
+              count={allComplaints.resolvedCount}
               label="Resolved complaints"
               icon="/icons/resolved.svg"
             />
             <StatCard 
               type="progress"
-              count={appointments.progressCount}
+              count={allComplaints.progressCount}
               label="In Progress complaints"
               icon="/icons/appointments.svg"
             />
             <StatCard 
               type="pending"
-              count={appointments.pendingCount}
+              count={allComplaints.pendingCount}
               label="Pending complaints"
               icon="/icons/pending.svg"
             />
             
           </section>
 
-          <DataTable columns={columns} data={appointments.documents} />
+          <DataTable columns={columns} data={allComplaints.documents} />
         </main>
     </div>
   )

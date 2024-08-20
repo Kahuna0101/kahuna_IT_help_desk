@@ -4,13 +4,16 @@ import {DataTable} from '@/components/table/DataTable'
 import { ToogleButton } from '@/components/ToogleButton'
 import { getAdminInfo } from '@/lib/actions/admin.action'
 import { getComplaintsByAdminId } from '@/lib/actions/appointment.actions'
+import { revalidatePath } from 'next/cache'
 
 import Image from 'next/image'
 import Link from 'next/link'
 
 const IndividualAdmin = async ({ params : { adminId }}: SearchParamProps) => {
   const admin = await getAdminInfo({ adminId })
-  const appointments = await getComplaintsByAdminId({ adminId: admin.$id});
+  const adminComplaints = await getComplaintsByAdminId({ adminId: admin.$id});
+  
+  revalidatePath(`/admin/${adminId}`);
   
   return (
     <div className="admin-dashboard">
@@ -40,29 +43,29 @@ const IndividualAdmin = async ({ params : { adminId }}: SearchParamProps) => {
           <section className="admin-stat">
             <StatCard 
               type="resolve"
-              count={appointments.resolvedCount}
+              count={adminComplaints.resolvedCount}
               label="Resolved complaints"
               icon="/icons/resolved.svg"
             />
             <StatCard 
               type="progress"
-              count={appointments.progressCount}
+              count={adminComplaints.progressCount}
               label="In Progress complaints"
               icon="/icons/progress.svg"
             />
             <StatCard 
               type="pending"
-              count={appointments.pendingCount}
+              count={adminComplaints.pendingCount}
               label="Pending complaints"
               icon="/icons/pending.svg"
             />
             
           </section>
 
-          <DataTable columns={columns} data={appointments.documents} />
+          <DataTable columns={columns} data={adminComplaints.documents} />
         </main>
     </div>
   )
 }
 
-export default IndividualAdmin
+export default IndividualAdmin;

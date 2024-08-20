@@ -54,8 +54,14 @@ export const columns: ColumnDef<Appointment>[] = [
             <p className="text-14-regular main-w-[100px]">
               {formatDateTime(row.original.$updatedAt).dateTime}
             </p>
+          ) : row.original.status === "progress" ? (
+            <p className="text-14-regular text-blue-700 main-w-[100px]">
+              In Progress
+            </p>
           ) : (
-            <p className="text-14-regular text-red-500 main-w-[100px]">Not Resolved yet</p>
+            <p className="text-14-regular text-red-500 main-w-[100px]">
+              Not Resolved yet
+            </p>
           )}
         </>
       );
