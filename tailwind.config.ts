@@ -53,6 +53,7 @@ const config = {
         pending: "url('/images/pending-bg.png')",
         progress: "url('/images/progress-bg.png')",
         resolved: "url('/images/resolved-bg.png')",
+        reset: "url('/icons/pass-reset-bg.svg')",
       },
       keyframes: {
         "accordion-down": {

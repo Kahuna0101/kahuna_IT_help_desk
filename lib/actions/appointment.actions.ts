@@ -9,7 +9,7 @@ import { Appointment } from "@/types/appwrite.types";
 import { Resend } from 'resend';
 import EmailTemplate from "@/components/EmailTemplate";
 
-const resend = new Resend(process.env.RESEND_API_KEY!);
+
 
 const {
     PROJECT_ID,
@@ -20,7 +20,10 @@ const {
     COMPLAINT_COLLECTION_ID,
     NEXT_PUBLIC_BUCKET_ID: BUCKET_ID,
     NEXT_PUBLIC_ENDPOINT: ENDPOINT,
-  } = process.env;
+    RESEND_API_KEY,
+} = process.env;
+
+const resend = new Resend(RESEND_API_KEY);
 
 export const createComplaint = async ({ complaintDocument, ...appointment }: CreateComplaintParams) => {
     try {
@@ -71,7 +74,7 @@ export const updateComplaint = async ({ appointmentId, userEmail , appointment, 
 
         // Impliment a text/email notification function
         await resend.emails.send({
-            from: "Kahuna Desk <ithelpdesk@gmail.com>",
+            from: "Kahuna Help Desk <kahunahelpdesk@dailytranservices.net>",
             to: userEmail,
             subject: 'Complaint Notification From IT HelpDesk',
             react: EmailTemplate({ appointment, type }),

@@ -129,3 +129,14 @@ export const logOutUser = async () => {
     return null;
   }
 }
+
+export const resetPassword = async (userEmail: string) => {
+  try {
+    const { account } = await createAdminClient();
+
+    account.createRecovery(userEmail, 'https://localhost:3000/recover-password');
+
+  } catch (error) {
+    console.log(`Error sending reset password link: ${error}`)
+  }
+}

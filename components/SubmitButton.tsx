@@ -7,14 +7,16 @@ interface SubmitButtonProps {
   isLoading: boolean;
   children: React.ReactNode;
   className?: string;
+  onClick?:  any;
 }
 
-const SubmitButton = ({ isLoading, children, className }:SubmitButtonProps ) => {
+const SubmitButton = ({ isLoading, children, className, onClick }:SubmitButtonProps ) => {
   return (
     <Button
       type="submit"
       disabled={isLoading}
       className={cn("bg-[#3754DB] rounded-xl text-white text-[16px]", className)}
+      onClick={onClick}
     >
       {isLoading ? (
         <div className="flex items-center gap-4">

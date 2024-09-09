@@ -24,14 +24,17 @@ const LogIn = () => {
 
           <LoginForm type="user" />
 
-          <div className="flex items-center justify-center gap-2 mt-5 text-16-regular">
-            <p>Don't have an account?</p>
+          <div className="flex flex-col items-center justify-center gap-2 mt-5 text-16-regular">
+            <Link href="/forgot-password" className="text-[#3754DB]">Forgot Password ?</Link>
+            <div className="flex gap-2">
+               <p>Don't have an account?</p>
             <Link href="/" className="text-[#3754DB]">
               Sign up
             </Link>
+            </div> 
           </div>
 
-          <div className="text-16-regular mt-10 flex justify-between">
+          <div className="text-16-regular mt-5 flex justify-between">
             <Link href="/?superAdmin=true" className="text-green-500">
               Super Admin
             </Link>
