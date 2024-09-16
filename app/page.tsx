@@ -1,5 +1,5 @@
 import AdminAuthModal from "@/components/AdminAuthModal";
-import SignupForm from "@/components/form/SignupForm";
+import LoginForm from "@/components/form/LoginForm";
 import PasskeyModal from "@/components/PasskeyModal";
 import { ToogleButton } from "@/components/ToogleButton";
 
@@ -31,12 +31,16 @@ export default function Home({ searchParams }: SearchParamProps) {
           <ToogleButton />
           </div>
           
+          <LoginForm type="user" />
 
-          <SignupForm type="user"/>
-
-          <div className="flex items-center justify-center gap-2 mt-5 text-16-regular">
-            <p>Have an account?</p>
-            <Link href="/log-in" className="text-[#3754DB]">log in</Link>
+          <div className="flex flex-col items-center justify-center gap-2 mt-5 text-16-regular">
+            <Link href="/forgot-password" className="text-[#3754DB]">Forgot Password ?</Link>
+            <div className="flex gap-2">
+               <p>Don't have an account?</p>
+            <Link href="/" className="text-[#3754DB]">
+              Sign up
+            </Link>
+            </div> 
           </div>
 
           <div className="text-16-regular mt-6 flex justify-between">

@@ -1,4 +1,4 @@
-import LoginForm from "@/components/form/LoginForm";
+import SignupForm from "@/components/form/SignupForm";
 import { ToogleButton } from "@/components/ToogleButton";
 import Image from "next/image";
 import Link from "next/link";
@@ -22,16 +22,11 @@ const LogIn = () => {
             <ToogleButton />
           </div>
 
-          <LoginForm type="user" />
+          <SignupForm type="user"/>
 
-          <div className="flex flex-col items-center justify-center gap-2 mt-5 text-16-regular">
-            <Link href="/forgot-password" className="text-[#3754DB]">Forgot Password ?</Link>
-            <div className="flex gap-2">
-               <p>Don't have an account?</p>
-            <Link href="/" className="text-[#3754DB]">
-              Sign up
-            </Link>
-            </div> 
+          <div className="flex items-center justify-center gap-2 mt-5 text-16-regular">
+            <p>Have an account?</p>
+            <Link href="/log-in" className="text-[#3754DB]">log in</Link>
           </div>
 
           <div className="text-16-regular mt-5 flex justify-between">

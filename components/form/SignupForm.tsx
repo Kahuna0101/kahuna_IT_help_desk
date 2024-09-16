@@ -11,8 +11,6 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { createUser } from "@/lib/actions/user.actions";
 import FileUploader from "../FileUploader";
-import { InputOTP, InputOTPGroup, InputOTPSlot } from "../ui/input-otp";
-import { encryptKey } from "@/lib/utils";
 import { createAdmin } from "@/lib/actions/admin.action";
 
 const SignupForm = ({ type }: { type: "admin" | "user" }) => {

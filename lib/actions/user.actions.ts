@@ -134,7 +134,7 @@ export const resetPassword = async (userEmail: string) => {
   try {
     const { account } = await createAdminClient();
 
-    account.createRecovery(userEmail, 'https://kahuna-it-help-desk.vercel.app/recover-password');
+    account.createRecovery(userEmail, 'https://localhost:3000/recover-password');
 
   } catch (error) {
     console.log(`Error sending reset password link: ${error}`)
