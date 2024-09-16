@@ -26,7 +26,7 @@ const LogIn = () => {
 
           <div className="flex items-center justify-center gap-2 mt-5 text-16-regular">
             <p>Have an account?</p>
-            <Link href="/log-in" className="text-[#3754DB]">log in</Link>
+            <Link href="/" className="text-[#3754DB]">log in</Link>
           </div>
 
           <div className="text-16-regular mt-5 flex justify-between">

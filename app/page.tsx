@@ -34,10 +34,10 @@ export default function Home({ searchParams }: SearchParamProps) {
           <LoginForm type="user" />
 
           <div className="flex flex-col items-center justify-center gap-2 mt-5 text-16-regular">
-            <Link href="/forgot-password" className="text-[#3754DB]">Forgot Password ?</Link>
+            <Link href="/forgot-password" className="text-[#3754DB]">Forgot Password?</Link>
             <div className="flex gap-2">
                <p>Don't have an account?</p>
-            <Link href="/" className="text-[#3754DB]">
+            <Link href="/sign-up" className="text-[#3754DB]">
               Sign up
             </Link>
             </div> 

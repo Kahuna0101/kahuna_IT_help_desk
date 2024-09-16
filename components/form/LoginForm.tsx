@@ -60,7 +60,7 @@ const LoginForm = ({ type }: { type: "admin" | "user"}) => {
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 flex-1">
         <section className="mb-12 space-y-4">
-          <h1 className="header">Welcome {type === 'user' ? 'back' : 'Admin' }👋</h1>
+          <h1 className="header">Welcome {type === 'admin' && 'Admin' }👋</h1>
           <p className="text-dark-700">Kindly provide your details to {type === 'user' ? 'make a complaint' : 'manage your received complaints' } </p>
         </section>
         <CustomFormField 
