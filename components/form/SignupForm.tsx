@@ -88,7 +88,7 @@ const SignupForm = ({ type }: { type: "admin" | "user" }) => {
           <p className="text-dark-700">
             {type === "admin"
               ? "Sign up to be able to manage received complaints"
-              : "Make your first complaint"}
+              : "Sign up and Make your first complaint"}
           </p>
         </section>
 
