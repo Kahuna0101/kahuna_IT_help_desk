@@ -1,4 +1,4 @@
-import CurrentTime from '@/components/CurrentTime'
+import CurrentDate from '@/components/CurrentDate'
 import StatCard from '@/components/StatCard'
 import {columns} from '@/components/table/columns'
 import {DataTable} from '@/components/table/DataTable'
@@ -41,7 +41,7 @@ const IndividualAdmin = async ({ params : { adminId }}: SearchParamProps) => {
               <h1 className="header">Welcome Engr. {admin.lastName}👋</h1>
                <p className='text-dark-700'>Start the day with managing new appointments</p>
             </div>
-            <CurrentTime />
+            <CurrentDate />
           </section>
 
           <section className="admin-stat">
