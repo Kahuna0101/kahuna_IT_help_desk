@@ -10,6 +10,16 @@ import Link from 'next/link'
 
 const SuperAdmin = async () => {
   const allComplaints = await getAllRecentComplaints();
+
+  const now = new Date();
+
+  const time = now.toLocaleTimeString("en-US", {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+  const date = new Intl.DateTimeFormat("en-US", { dateStyle: "full" }).format(
+    now
+  );
   
   return (
     <div className="admin-dashboard">
@@ -36,7 +46,11 @@ const SuperAdmin = async () => {
               <h1 className="header">Welcome Super Admin👋</h1>
               <p className='text-dark-700'>Start the day with managing all Engrs. complaints task</p>
             </div>
-            <CurrentTime />
+            
+            <div className="flex flex-col gap-2">
+              <h1 className="text-4xl font-extrabold lg:text-6xl">{time}</h1>
+              <p className="text-lg text-sky-1 lg:text-2xl">{date}</p>
+            </div>
           </section>
 
           <section className="admin-stat">
