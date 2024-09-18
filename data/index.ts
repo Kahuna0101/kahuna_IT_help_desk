@@ -5,3 +5,12 @@ export const StatusIcon = {
   pending: "/icons/pending.svg",
   resolved: "/icons/resolved.svg",
 };
+
+export const Regions = [
+  "Ring Road",
+  "Molete",
+  "Omole",
+  "Ibadan Tech",
+  "Bodija",
+  "Surulere",
+]

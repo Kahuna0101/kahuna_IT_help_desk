@@ -19,7 +19,7 @@ import {
 } from "@/lib/actions/appointment.actions";
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 import { Label } from "../ui/label";
-import { PriorityStatus } from "@/data";
+import { PriorityStatus, Regions } from "@/data";
 import { Skeleton } from "../ui/skeleton";
 
 const ComplaintForm = ({
@@ -191,13 +191,24 @@ const ComplaintForm = ({
             </div>
             <div className="flex flex-col gap-6 xl:flex-row">
               <CustomFormField
-                fieldType={FormFieldType.INPUT}
+                fieldType={FormFieldType.SELECT}
                 control={form.control}
                 name="region"
                 label="Your Region"
-                placeholder="Enter the region you're making the complaining from"
+                placeholder="Kindly select your region from the dropdown"
                 disabled={type === "progress"}
-              />
+              >
+                {Regions.map((region) => (
+                  <SelectItem key={region} value={region}>
+                    <div className="flex cursor-pointer items-center gap-2">
+                      {region}
+                    </div>
+                  </SelectItem>
+                ))}
+              </CustomFormField>
+
+
+
               <CustomFormField
                 fieldType={FormFieldType.INPUT}
                 control={form.control}

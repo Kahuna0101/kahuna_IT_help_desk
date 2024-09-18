@@ -36,7 +36,7 @@ const AdminAuthModal = () => {
     const accessKey = encryptedKey && decryptKey(encryptedKey);
 
     if (path) {
-      if (accessKey === process.env.NEXT_PUBLIC_SUPER_ADMIN_PASSKEY) {
+      if (accessKey === process.env.NEXT_PUBLIC_ADMIN_PASSKEY) {
         setOpen(false);
         router.push("/admin/login");
       } else {
