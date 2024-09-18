@@ -1,3 +1,4 @@
+import CurrentTime from '@/components/CurrentTime'
 import StatCard from '@/components/StatCard'
 import {columns} from '@/components/table/columns'
 import {DataTable} from '@/components/table/DataTable'
@@ -35,9 +36,12 @@ const IndividualAdmin = async ({ params : { adminId }}: SearchParamProps) => {
         </header>
 
         <main className="admin-main">
-          <section className="w-full space-y-4">
-            <h1 className="header">Welcome Engr. {admin.lastName}👋</h1>
-            <p className='text-dark-700'>Start the day with managing new appointments</p>
+          <section className="w-full space-y-4 flex md:flex-row flex-col justify-between md:items-center">
+            <div>
+              <h1 className="header">Welcome Engr. {admin.lastName}👋</h1>
+               <p className='text-dark-700'>Start the day with managing new appointments</p>
+            </div>
+            <CurrentTime />
           </section>
 
           <section className="admin-stat">

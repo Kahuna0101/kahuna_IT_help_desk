@@ -1,3 +1,4 @@
+import CurrentTime from '@/components/CurrentTime'
 import StatCard from '@/components/StatCard'
 import {columns} from '@/components/table/columns'
 import {DataTable} from '@/components/table/DataTable'
@@ -30,9 +31,12 @@ const SuperAdmin = async () => {
         </header>
 
         <main className="admin-main">
-          <section className="w-full space-y-4">
-            <h1 className="header">Welcome Super Admin👋</h1>
-            <p className='text-dark-700'>Start the day with managing all Engrs. complaints task</p>
+          <section className="w-full space-y-4 flex md:flex-row flex-col justify-between md:items-center">
+            <div>
+              <h1 className="header">Welcome Super Admin👋</h1>
+              <p className='text-dark-700'>Start the day with managing all Engrs. complaints task</p>
+            </div>
+            <CurrentTime />
           </section>
 
           <section className="admin-stat">
