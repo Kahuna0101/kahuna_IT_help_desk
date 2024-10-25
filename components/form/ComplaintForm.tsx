@@ -121,6 +121,7 @@ const ComplaintForm = ({
           userEmail: appointment?.user.email!,
           appointmentId: appointment?.$id!,
           appointment: {
+            admin: selectedAdmin.$id,
             itEngineer: values?.itEngineer,
             status: status as Status,
             closedReason: values?.closedReason,

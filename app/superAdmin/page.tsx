@@ -10,7 +10,7 @@ import Link from 'next/link'
 
 const SuperAdmin = async () => {
   const allComplaints = await getAllRecentComplaints();
-  
+
   return (
     <div className="admin-dashboard">
         <header className="admin-header">

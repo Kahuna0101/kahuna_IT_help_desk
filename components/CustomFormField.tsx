@@ -46,7 +46,7 @@ interface CustomProps {
 }
 
 const RenderField = ({ field, props }: { field:any, props:CustomProps}) => {
-  const { fieldType, placeholder, showTimeSelect, dateFormat, label, renderSkeleton } = props;
+  const { fieldType, placeholder, showTimeSelect, dateFormat, label, disabled, renderSkeleton } = props;
   const { theme } = useTheme();
 
   switch (fieldType) {
@@ -159,6 +159,7 @@ const RenderField = ({ field, props }: { field:any, props:CustomProps}) => {
           <Select 
             onValueChange={field.onChange}
             defaultValue={field.value}
+            disabled={disabled}
           >
             <FormControl>
               <SelectTrigger  className="shad-select-trigger">

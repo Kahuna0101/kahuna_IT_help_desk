@@ -136,7 +136,6 @@ export const getAllRecentComplaints = async () => {
             ...counts,
             documents: allComplaints.documents,
         }
-
         return parseStringify(data);
     } catch (error) {
         console.log(`Error getting all recent appointments: ${error}`)
