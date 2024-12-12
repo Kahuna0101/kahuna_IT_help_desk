@@ -20,7 +20,7 @@ import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
-const PasskeyModal = () => {
+const SuperAdminAuthModal = () => {
 
   const router = useRouter();
   const path = usePathname();
@@ -32,7 +32,7 @@ const PasskeyModal = () => {
     typeof window !== "undefined"
       ? window.localStorage.getItem("accessKey")
       : null;
-
+      
   useEffect(() => {
     const accessKey = encryptedKey && decryptKey(encryptedKey);
 
@@ -51,7 +51,7 @@ const PasskeyModal = () => {
   ) => {
     e.preventDefault();
 
-    if (passkey === process.env.NEXT_PUBLIC_ADMIN_PASSKEY) {
+    if (passkey === process.env.NEXT_PUBLIC_SUPER_ADMIN_PASSKEY) {
       const encryptedKey = encryptKey(passkey);
 
       localStorage.setItem("accessKey", encryptedKey);
@@ -123,4 +123,4 @@ const PasskeyModal = () => {
   )
 }
 
-export default PasskeyModal
+export default SuperAdminAuthModal;

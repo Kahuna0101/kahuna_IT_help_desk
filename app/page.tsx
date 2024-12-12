@@ -1,6 +1,6 @@
 import AdminAuthModal from "@/components/AdminAuthModal";
 import LoginForm from "@/components/form/LoginForm";
-import PasskeyModal from "@/components/PasskeyModal";
+import SuperAdminAuthModal from "@/components/SuperAdminAuthModal";
 import { ToogleButton } from "@/components/ToogleButton";
 
 import Image from "next/image";
@@ -12,7 +12,7 @@ export default function Home({ searchParams }: SearchParamProps) {
 
   return (
     <div className="flex h-screen max-h-screen">
-      {isSuperAdmin && <PasskeyModal />}
+      {isSuperAdmin && <SuperAdminAuthModal />}
       {isAdmin && <AdminAuthModal />}
 
       <section className="remove-scrollbar container my-auto">
